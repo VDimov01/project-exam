@@ -23,7 +23,7 @@ router.get('/users/:id', (req, res) => {
     })
 })
 
-router.post('/users', async (req, res) => {
+router.post('/users/register', async (req, res) => {
     const user = req.body;
 
     User.create(user)

@@ -1,3 +1,4 @@
+import {Link} from 'react-router-dom'
 
 export const Header = () => {
     return (
@@ -6,12 +7,12 @@ export const Header = () => {
           <div className="row">
             <div className="col-lg-11 offset-lg-1">
               <nav className="navbar navbar-expand-lg custom_nav-container ">
-                <a className="navbar-brand" href="index.html">
+                <Link className="navbar-brand" to="/">
                   <img src="images/logo.png" alt="" />
                   <span>
                     Uliya
                   </span>
-                </a>
+                </Link>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                   aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                   <span className="navbar-toggler-icon"></span>
@@ -21,16 +22,22 @@ export const Header = () => {
                   <div className="d-flex ml-auto flex-column flex-lg-row align-items-center">
                     <ul className="navbar-nav  ">
                       <li className="nav-item active">
-                        <a className="nav-link" href="index.html">Home <span className="sr-only">(current)</span></a>
+                        <Link className="nav-link" to="/">Home <span className="sr-only">(current)</span></Link>
                       </li>
                       <li className="nav-item">
-                        <a className="nav-link" href="about.html"> About</a>
+                        <Link className="nav-link" to="/about"> About</Link>
                       </li>
                       <li className="nav-item">
-                        <a className="nav-link" href="portfolio.html"> Portfolio </a>
+                        <Link className="nav-link" to="/catalog"> Catalog </Link>
                       </li>
                       <li className="nav-item">
-                        <a className="nav-link" href="contact.html">Contact Us</a>
+                        <Link className="nav-link" to="/contact-us">Contact Us</Link>
+                      </li>
+                      <li className="nav-item">
+                        <Link className="nav-link" to="/register">Register</Link>
+                      </li>
+                      <li className="nav-item">
+                        <Link className="nav-link" to="/login">Login</Link>
                       </li>
                     </ul>
                     <form className="form-inline">
