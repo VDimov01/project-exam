@@ -11,6 +11,7 @@ import { Contact } from './components/Contact'
 import { Info } from './components/Info'
 import Register from './components/Register/Register'
 import Login from './components/Login/Login'
+import Logout from './components/Logout/Logout'
 import { useState } from 'react';
 import { AuthContext } from './contexts/AuthContext';
 
@@ -23,15 +24,20 @@ function App() {
     setAuth(user);
   }
 
+  const userLogout = () => {
+    setAuth({});
+}
+
   return (
     <>
-    <AuthContext.Provider value={{ user:auth, userLogin }}>
+    <AuthContext.Provider value={{ user:auth, userLogin, userLogout }}>
       <div className="App">
         <Header />
         <Routes>
           <Route path='/' element={<Slider />} />
           <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login />} />
+          <Route path='/logout' element={<Logout />} />
           <Route path='/catalog' element={<Portfolio />} />
           <Route path='/contact-us' element={<Contact />} />
           <Route path='/about' element={<About />} />

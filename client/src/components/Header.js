@@ -40,7 +40,14 @@ export const Header = () => {
                         </li>
                      
                       {user.email 
-                      ?  <li><span>{user.email}</span></li>
+                      ?<> 
+                        <li className='nav-item'>
+                          <Link className='nav-link' to="/logout">Logout</Link>
+                        </li>
+                        <li>
+                          <span>{user.email}</span>
+                        </li>
+                        </>
                       : <>
                       <li className="nav-item">
                         <Link className="nav-link" to="/register">Register</Link>
