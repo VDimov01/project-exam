@@ -1,0 +1,22 @@
+[
+    {
+        "_id": "1",
+        "imageUrl": "/images/dog.jpg"
+    },
+    {
+        "_id": "2",
+        "imageUrl": "/images/butterfly.jfif"
+    },
+    {
+        "_id": "3",
+        "imageUrl": "/images/154009.webp"
+    },
+    {
+        "_id": "4",
+        "imageUrl": "/images/p-4.jpg"
+    },
+    {
+        "_id": "5",
+        "imageUrl": "/images/p-5.jpg"
+    }
+]
