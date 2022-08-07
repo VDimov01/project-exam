@@ -28,7 +28,7 @@ export const Slider = () => {
                   </div>
                   <div className="col-md-6 px-0">
                     <div className="img-box">
-                      <img src="images/slider-img.jpg" alt="" />
+                      <img src="images/butterfly.jfif" alt="" />
                     </div>
                   </div>
                 </div>
@@ -58,7 +58,7 @@ export const Slider = () => {
                   </div>
                   <div className="col-md-6 px-0">
                     <div className="img-box">
-                      <img src="images/slider-img.jpg" alt="" />
+                      <img src="images/dog.jpg" alt="" />
                     </div>
                   </div>
                 </div>
@@ -88,7 +88,7 @@ export const Slider = () => {
                   </div>
                   <div className="col-md-6 px-0">
                     <div className="img-box">
-                      <img src="images/slider-img.jpg" alt="" />
+                      <img src="images/154009.webp" alt="" />
                     </div>
                   </div>
                 </div>
