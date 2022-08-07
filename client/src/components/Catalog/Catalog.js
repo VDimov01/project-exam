@@ -5,10 +5,13 @@ const Catalog = ({
 }) => {
     return(
         <>
-            <h1>Catalog</h1>
+            <div className="heading_container">
+                <h2>Catalog</h2>
+            </div>
+          
             {pictures.map(picture => <CatalogItem key={picture._id} picture={picture} />)}
-            <div class="clearfix"></div>
-            </>
+            <div className="clearfix"></div>
+        </>
         
     );
 }
