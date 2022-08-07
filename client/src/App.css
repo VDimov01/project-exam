@@ -7,6 +7,37 @@
   align-items: center;
 }
 
+.error{
+  color: red;
+}
+
+.section-content{
+  padding: 5px;
+  border: 2px solid black;
+}
+
+.description{
+  width: 600px;
+  height: 200px;
+}
+
+.button-div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.create-form{
+  width: 50%;
+  height: 50%;
+}
+
 div.gallery {
   border: 1px solid #ccc;
 }
@@ -16,8 +47,8 @@ div.gallery:hover {
 }
 
 div.gallery img {
-  width: 100%;
-  height: auto;
+  width: 462px;
+  height: 325px;
 }
 
 div.desc {
@@ -50,3 +81,6 @@ div.desc {
   display: table;
   clear: both;
 }
+
+
+

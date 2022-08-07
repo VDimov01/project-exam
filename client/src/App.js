@@ -13,6 +13,7 @@ import Register from './components/Register/Register'
 import Login from './components/Login/Login'
 import Logout from './components/Logout/Logout'
 import Catalog from './components/Catalog/Catalog'
+import CreatePost from './components/CreatePost/CreatePost';
 import { useEffect, useState } from 'react';
 import { AuthContext } from './contexts/AuthContext';
 import * as picturesService from './services/picturesService';
@@ -27,6 +28,14 @@ function App() {
     picturesService.getAll()
       .then(pictures => setPictures(Object.values(pictures)))
   },[]);
+
+  const addPicture = (picture) => {
+    setPictures([...pictures, picture]);
+  }
+
+  const updatePicture = (picture) => {
+    setPictures(pictures.map(p => p._id === picture._id ? picture : p));
+  }
 
   const userLogin = (user) => {
     setAuth(user);
@@ -47,6 +56,7 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/logout' element={<Logout />} />
           <Route path='/catalog' element={<Catalog pictures={pictures}/>} />
+          <Route path='/create' element={<CreatePost addPicture={addPicture}/>} />
           <Route path='/contact-us' element={<Contact />} />
           <Route path='/about' element={<About />} />
         </Routes>
