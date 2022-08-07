@@ -38,12 +38,13 @@ export const Header = () => {
                       <li className="nav-item">
                             <Link className="nav-link" to="/contact-us">Contact Us</Link>
                       </li>
-                      <li className="nav-item">
-                            <Link className="nav-link" to="/create">Create a post</Link>
-                      </li>
+                      
                      
                       {user.email 
                       ?<> 
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/create">Create a post</Link>
+                        </li>
                         <li className='nav-item'>
                           <Link className='nav-link' to="/logout">Logout</Link>
                         </li>
