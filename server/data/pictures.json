@@ -1,22 +1,20 @@
 [
     {
+        "_id": "0",
+        "imageUrl": "/images/dog.jpg",
+        "title": "Dog",
+        "description": "This is a dog"
+    },
+    {
         "_id": "1",
-        "imageUrl": "/images/dog.jpg"
+        "imageUrl": "https://onlinepngtools.com/images/examples-onlinepngtools/palm-fronds-and-sky.jpg",
+        "title": "Butterfly",
+        "description": "Butterfly 1fdsfdsfdsfds"
     },
     {
         "_id": "2",
-        "imageUrl": "/images/butterfly.jfif"
-    },
-    {
-        "_id": "3",
-        "imageUrl": "/images/154009.webp"
-    },
-    {
-        "_id": "4",
-        "imageUrl": "/images/p-4.jpg"
-    },
-    {
-        "_id": "5",
-        "imageUrl": "/images/p-5.jpg"
+        "imageUrl": "/images/154009.webp",
+        "title": "Cat",
+        "description": "Cool cat"
     }
 ]
