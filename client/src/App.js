@@ -14,6 +14,8 @@ import Login from './components/Login/Login'
 import Logout from './components/Logout/Logout'
 import Catalog from './components/Catalog/Catalog'
 import CreatePost from './components/CreatePost/CreatePost';
+import Details from './components/Details/Details';
+import Edit from './components/Edit/Edit';
 import { useEffect, useState } from 'react';
 import { AuthContext } from './contexts/AuthContext';
 import * as picturesService from './services/picturesService';
@@ -57,6 +59,8 @@ function App() {
           <Route path='/logout' element={<Logout />} />
           <Route path='/catalog' element={<Catalog pictures={pictures}/>} />
           <Route path='/create' element={<CreatePost addPicture={addPicture}/>} />
+          <Route path='/edit/:id' element={<Edit pictures={pictures} updatePicture={updatePicture}/>} />
+          <Route path='/details/:id' element={<Details pictures={pictures}/>} />
           <Route path='/contact-us' element={<Contact />} />
           <Route path='/about' element={<About />} />
         </Routes>

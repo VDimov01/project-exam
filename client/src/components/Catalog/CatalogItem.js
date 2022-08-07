@@ -4,12 +4,14 @@ const CatalogItem = ({
     picture
 }) => {
     return(
-    <div class="responsive">
-  <div class="gallery">
-    <Link to="/">  {/* Add redirect to details */}
+    <div className="responsive">
+  <div className="gallery">
+    <Link to={`/details/${picture._id}`}>  {/* Add redirect to details */}
       <img src={picture.imageUrl} alt="Cinque Terre" width="600" height="400" />
     </Link>
-    <div class="desc">Add a description of the image here</div>
+    <div className="desc">{picture.title}
+    </div>
+    
   </div>
 </div>
 );
