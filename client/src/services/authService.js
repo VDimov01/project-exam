@@ -1,5 +1,5 @@
 
-const baseUrl = 'http://localhost:3030/users';
+const baseUrl = 'http://localhost:5000/api/users';
 
 export const login = (email, password) => {
     return fetch(`${baseUrl}/login`, {

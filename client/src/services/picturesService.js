@@ -1,5 +1,5 @@
 
-const baseUrl = 'http://localhost:3030/jsonstore/pictures';
+const baseUrl = 'http://localhost:5000/pictures';
 
 export const getAll = () => {
     return fetch(baseUrl)
