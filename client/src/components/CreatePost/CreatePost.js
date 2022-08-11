@@ -1,16 +1,19 @@
 import * as pictureService from '../../services/picturesService';
+import { AuthContext } from '../../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 
 const CreatePost = ({
     addPicture
 }) => {
     const navigate = useNavigate();
+    const { user } = useContext(AuthContext);
     const [errors, setErrors] = useState({});
     const [data, setData] = useState({
         title: "",
         description: "",
-        imageUrl: ""
+        imageUrl: "",
+        owner: ""
     });
 
     const onChange = (e) => {
@@ -41,7 +44,11 @@ const CreatePost = ({
     const onSubmit=  (e) => {
         e.preventDefault();
 
-        pictureService.create(data)
+        data.owner = user._id;
+
+        const {title, description, imageUrl, owner } = data;
+
+        pictureService.create(title, description, imageUrl, owner)
             .then(result => {
                 addPicture(result)
                 navigate('/catalog');
