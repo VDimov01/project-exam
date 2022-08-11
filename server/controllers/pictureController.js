@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Picture } = require('../models/Picture');
 const { body, validationResult } = require('express-validator');
 
-router.get('/pictures', (req, res) => {
+router.get('/', (req, res) => {
     Picture.find()
         .then((pictures) => {
             res.json(pictures);
@@ -13,7 +13,7 @@ router.get('/pictures', (req, res) => {
         );
 });
 
-router.get('/pictures/:id', (req, res) => {
+router.get('/details/:id', (req, res) => {
     const id = req.params.id;
 
     Picture.findById(id)
@@ -25,7 +25,7 @@ router.get('/pictures/:id', (req, res) => {
         })
 });
 
-router.put('/pictures/:id',
+router.put('/details/:id',
     body('title').isLength({ min: 3 }).withMessage('Title must be at least 3 characters long'),
     body('description').isLength({ min: 5 }).withMessage('Description must be at least 5 characters long'),
     body('imageUrl').isURL().withMessage('Image URL must be valid'),
@@ -48,7 +48,19 @@ router.put('/pictures/:id',
             })
     });
 
-router.post('/pictures',
+router.delete('/details/:id', (req, res) => {
+    const id = req.params.id;
+
+    Picture.findByIdAndDelete(id)
+        .then((picture) => {
+            res.json(picture);
+        })
+        .catch((err) => {
+            res.json(err);
+        })
+});
+
+router.post('/',
     body('title').isLength({ min: 3 }).withMessage('Title must be at least 3 characters long'),
     body('description').isLength({ min: 5 }).withMessage('Description must be at least 5 characters long'),
     body('imageUrl').isURL().withMessage('Image URL must be valid'),
