@@ -7,23 +7,35 @@ export const getAll = () => {
 }
 
 export const getOne = (id) => {
-    return fetch(`${baseUrl}/${id}`)
+    return fetch(`${baseUrl}/details/${id}`)
         .then(res => res.json())
 }
 
-export const create = (picture) => {
+export const create = (title, description, imageUrl, owner) => {
     return fetch(baseUrl, {
         method: 'POST',
-        body: JSON.stringify(picture)
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({title, description, imageUrl, owner})
     })
         .then(res => res.json())
 }
 
 export const updateOne = (id, picture) => {
-    return fetch(`${baseUrl}/${id}`, {
+    return fetch(`${baseUrl}/details/${id}`, {
         method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
         body: JSON.stringify(picture)
     })
         .then(res => res.json())
 }
 
+export const deleteOne = (id) => {
+    return fetch(`${baseUrl}/details/${id}`, {
+        method: 'DELETE'
+    })
+        .then(res => res.json())
+}

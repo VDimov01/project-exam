@@ -39,6 +39,10 @@ function App() {
     setPictures(pictures.map(p => p._id === picture._id ? picture : p));
   }
 
+  const deletePicture = (id) => {
+    setPictures(pictures.filter(p => p._id !== id));
+  }
+
   const userLogin = (user) => {
     setAuth(user);
   }
@@ -60,7 +64,7 @@ function App() {
           <Route path='/catalog' element={<Catalog pictures={pictures}/>} />
           <Route path='/create' element={<CreatePost addPicture={addPicture}/>} />
           <Route path='/edit/:id' element={<Edit pictures={pictures} updatePicture={updatePicture}/>} />
-          <Route path='/details/:id' element={<Details pictures={pictures}/>} />
+          <Route path='/details/:id' element={<Details pictures={pictures} deletePicture={deletePicture}/>} />
           <Route path='/contact-us' element={<Contact />} />
           <Route path='/about' element={<About />} />
         </Routes>

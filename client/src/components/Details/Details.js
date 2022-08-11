@@ -1,12 +1,24 @@
-import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
+import * as pictureService from "../../services/picturesService";
 
 const Details = ({
-    pictures
+    pictures,
+    deletePicture
 }) => {
     const { id } = useParams();
+    const navigate = useNavigate();
     
     const picture = pictures.find(picture => picture._id === id);
+
+    const delPic = (e) => {
+        e.preventDefault();
+
+        pictureService.deleteOne(id)
+            .then(result => {
+                deletePicture(id);
+                navigate('/catalog');
+            })
+    }
 
     return (
         <section className="form-wrapper">
@@ -19,7 +31,7 @@ const Details = ({
                 <textarea className="description" id="description" value={picture.description} disabled></textarea>
                 <div className="button-div">
                 <Link className="btn btn-primary" to={`/edit/${id}`}>Edit</Link>
-                <button className="btn btn-secondary">Delete</button>
+                <button className="btn btn-secondary" onClick={delPic}>Delete</button>
                 </div>
             </div>
         </section>
