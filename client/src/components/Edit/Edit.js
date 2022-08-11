@@ -52,7 +52,7 @@ const Edit = ({
 
         picturesService.updateOne(id, data)
             .then(picture => {
-                updatePicture(picture);
+                updatePicture(data);
                 navigate('/catalog');
             })
     }
