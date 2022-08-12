@@ -20,6 +20,7 @@ const Edit = ({
 
     useEffect(() => {
         setData(picture);
+        console.log('change');
     },[picture]);
 
     const onChange = (e) => {

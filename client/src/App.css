@@ -5,6 +5,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 20px;
+}
+
+.form-input{
+  width: 750px;
+  height: 150px;
 }
 
 .error{

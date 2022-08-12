@@ -19,17 +19,24 @@ import Edit from './components/Edit/Edit';
 import { useEffect, useState } from 'react';
 import { AuthContext } from './contexts/AuthContext';
 import * as picturesService from './services/picturesService';
+import * as commentsService from './services/commentsService';
 
 
 function App() {
 
   const [auth, setAuth] = useState({});
   const [pictures, setPictures] = useState([]);
+  // const [comments, setComments] = useState([]);
 
   useEffect(() => {
     picturesService.getAll()
       .then(pictures => setPictures(Object.values(pictures)))
   },[]);
+
+  // useEffect(() => {
+  //   commentsService.getAll()
+  //     .then(comments => setComments(Object.values(comments)))
+  // },[]);
 
   const addPicture = (picture) => {
     setPictures([...pictures, picture]);
@@ -49,7 +56,11 @@ function App() {
 
   const userLogout = () => {
     setAuth({});
-}
+  }
+
+  const addComment = (comment) => {
+
+  }
 
   return (
     <>
@@ -64,7 +75,7 @@ function App() {
           <Route path='/catalog' element={<Catalog pictures={pictures}/>} />
           <Route path='/create' element={<CreatePost addPicture={addPicture}/>} />
           <Route path='/edit/:id' element={<Edit pictures={pictures} updatePicture={updatePicture}/>} />
-          <Route path='/details/:id' element={<Details pictures={pictures} deletePicture={deletePicture}/>} />
+          <Route path='/details/:id' element={<Details pictures={pictures} updatePicture={updatePicture} deletePicture={deletePicture}/>} />
           <Route path='/contact-us' element={<Contact />} />
           <Route path='/about' element={<About />} />
         </Routes>

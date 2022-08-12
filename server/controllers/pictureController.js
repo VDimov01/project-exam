@@ -3,7 +3,7 @@ const { Picture } = require('../models/Picture');
 const { body, validationResult } = require('express-validator');
 
 router.get('/', (req, res) => {
-    Picture.find()
+    Picture.find().populate('comments')
         .then((pictures) => {
             res.json(pictures);
         })
@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
 router.get('/details/:id', (req, res) => {
     const id = req.params.id;
 
-    Picture.findById(id)
+    Picture.findById(id).populate('comments')
         .then((picture) => {
             res.json(picture);
         })

@@ -30,3 +30,8 @@ export const register = (email, password) => {
     })
     .then(res => res.json())
 }
+
+export const getOne = (id) => {
+    return fetch(`${baseUrl}/${id}`)
+    .then(res => res.json())
+}
