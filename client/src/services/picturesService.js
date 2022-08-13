@@ -18,7 +18,7 @@ export const create = (title, description, imageUrl, owner, token) => {
             'Content-Type': 'application/json',
             'X-Authorization': token
         },
-        body: JSON.stringify({title, description, imageUrl, owner})
+        body: JSON.stringify({ title, description, imageUrl, owner })
     })
         .then(res => res.json())
 }

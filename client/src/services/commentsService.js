@@ -17,7 +17,7 @@ export const create = (creator, text) => {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify( {text, creator} )
+        body: JSON.stringify({ text, creator })
     })
         .then(res => res.json())
 }

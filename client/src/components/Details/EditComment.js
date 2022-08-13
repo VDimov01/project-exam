@@ -6,17 +6,17 @@ export const EditComment = ({
     pictures,
     updatePicture
 }) => {
-    
+
     const [comment, setComment] = useState({});
     const navigate = useNavigate();
-    const {id, pictureId} = useParams();
+    const { id, pictureId } = useParams();
 
     const picture = pictures.find(p => p._id === pictureId);
 
     useEffect(() => {
         commentsService.getOne(id)
             .then(comment => setComment(comment));
-    },[]);
+    }, []);
 
     const onChange = (e) => {
         setComment(state => {
@@ -27,7 +27,7 @@ export const EditComment = ({
         });
         console.log('change');
     }
-    
+
     const onSubmit = (e) => {
         e.preventDefault();
         commentsService.updateOne(id, comment)
@@ -38,19 +38,19 @@ export const EditComment = ({
             })
     }
 
-    return(
+    return (
         <section>
             <div className='form-wrapper'>
-            <form className="create-form" onSubmit={onSubmit}>
-                <div className="form-group">
-                    <div>
-                        <label htmlFor="text">Edit comment: </label>
-                    </div>
+                <form className="create-form" onSubmit={onSubmit}>
+                    <div className="form-group">
+                        <div>
+                            <label htmlFor="text">Edit comment: </label>
+                        </div>
                         <textarea type="text" className="form-input" id="text" name="text" value={comment.text} onChange={onChange} placeholder="Enter comment" ></textarea>
-                </div>
-                <button type="submit" className="btn btn-primary">Save</button>
-            </form>
-                </div>
+                    </div>
+                    <button type="submit" className="btn btn-primary">Save</button>
+                </form>
+            </div>
         </section>
     );
 }

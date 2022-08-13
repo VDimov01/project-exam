@@ -7,9 +7,9 @@ export const login = (email, password) => {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({email, password})
+        body: JSON.stringify({ email, password })
     })
-    .then(res => res.json())
+        .then(res => res.json())
 }
 
 export const logout = (token) => {
@@ -26,12 +26,12 @@ export const register = (email, password) => {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({email, password})
+        body: JSON.stringify({ email, password })
     })
-    .then(res => res.json())
+        .then(res => res.json())
 }
 
 export const getOne = (id) => {
     return fetch(`${baseUrl}/${id}`)
-    .then(res => res.json())
+        .then(res => res.json())
 }

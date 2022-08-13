@@ -12,7 +12,7 @@ export const AddComment = ({
     const navigate = useNavigate();
     const [comment, setComment] = useState("");
 
-    const {user} = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
 
     const editComment = (commentId, comment) => {
         commentsService.updateOne(commentId, comment)
@@ -30,8 +30,8 @@ export const AddComment = ({
         e.preventDefault();
 
         const result = await commentsService.create(user._id, comment);
-        
-            console.log(result);
+
+        console.log(result);
         picture.comments.push(result._id);
         pictureService.updateOne(picture._id, picture)
             .then(result => {
@@ -43,39 +43,41 @@ export const AddComment = ({
 
     return (
         <>
-        {user.email 
-            ?<section>
-            <div className='form-wrapper'>
-            <form className="create-form" onSubmit={onSubmit}>
-                <div className="form-group">
-                    <div>
-                        <label htmlFor="comment">Add comment: </label>
+            {user.email
+                ?
+                <section className='form-wrapper'>
+                    <div className="section-content">
+                        <form className="create-form" onSubmit={onSubmit}>
+                            <div className="form-group">
+                                <div>
+                                    <label htmlFor="comment">Add comment: </label>
+                                </div>
+                                <textarea type="text" className="form-input" id="comment" name="comment" value={comment} onChange={onChange} placeholder="Enter comment" ></textarea>
+                            </div>
+                            <button type="submit" className="btn btn-primary">Submit</button>
+                        </form>
                     </div>
-                        <textarea type="text" className="form-input" id="comment" name="comment" value={comment} onChange={onChange} placeholder="Enter comment" ></textarea>
-                </div>
-                <button type="submit" className="btn btn-primary">Submit</button>
-            </form>
-                </div>
-        </section>
-        : ''
-        }
-        
+                </section>
 
-        <section>
-            <div className="form-wrapper">
-                <div>
-                    
-                    {picture.comments.map(x => 
-                    <Comment key={x._id} comment={x.text} commentId={x._id} 
-                    creator={x.creator?.email} editComment={editComment}
-                    picture={picture}
-                    />
-                    )}
+                : ''
+            }
 
-                    {picture.comments.length == 0 && <p style={{fontWeight: "bold", fontSize: 32}}>No comments for this photo!</p>}
+
+            <section>
+                <div className="form-wrapper">
+                    <div>
+
+                        {picture.comments.map(x =>
+                            <Comment key={x._id} comment={x.text} commentId={x._id}
+                                creator={x.creator?.email} editComment={editComment}
+                                picture={picture}
+                            />
+                        )}
+
+                        {picture.comments.length == 0 && <p style={{ fontWeight: "bold", fontSize: 32 }}>No comments for this photo!</p>}
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
         </>
     );
 }

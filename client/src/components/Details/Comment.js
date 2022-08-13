@@ -31,9 +31,10 @@ export const Comment = ({
                 
             </div>
             {user.email === creator 
-            ?<div className="comments-button-div">
-            <Link className="btn btn-primary comment-button" to={`/edit/comment/${commentId}/${picture._id}`}>Edit</Link>
-            <button className="btn btn-secondary" onClick={deleteComment}>Delete</button> 
+            ?
+            <div className="comments-button-div">
+                <Link className="btn btn-primary comment-button" to={`/edit/comment/${commentId}/${picture._id}`}>Edit</Link>
+                <button className="btn btn-secondary" onClick={deleteComment}>Delete</button> 
             </div>
             :''
         }

@@ -31,7 +31,7 @@ function App() {
   useEffect(() => {
     picturesService.getAll()
       .then(pictures => setPictures(Object.values(pictures)))
-  },[]);
+  }, []);
 
 
   const addPicture = (picture) => {
@@ -56,32 +56,32 @@ function App() {
 
   return (
     <>
-    <AuthContext.Provider value={{ user:auth, userLogin, userLogout }}>
-      <div className="App">
-        <Header />
-        <Routes>
-          <Route path='/' element={<Home pictures={pictures}/>} />
-          <Route path='/register' element={<Register />} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/logout' element={<Logout />} />
-          <Route path='/catalog' element={<Catalog pictures={pictures}/>} />
-          <Route path='/create' element={<CreatePost addPicture={addPicture}/>} />
-          <Route path='/edit/:id' element={<Edit pictures={pictures} updatePicture={updatePicture}/>} />
-          <Route path='/details/:id' element={<Details pictures={pictures} updatePicture={updatePicture} deletePicture={deletePicture}/>} />
-          <Route path='/edit/comment/:id/:pictureId' element={<EditComment pictures={pictures} updatePicture={updatePicture}/>} />
-          <Route path='/contact-us' element={<Contact />} />
-          <Route path='/about' element={<About />} />
-        </Routes>
+      <AuthContext.Provider value={{ user: auth, userLogin, userLogout }}>
+        <div className="App">
+          <Header />
+          <Routes>
+            <Route path='/' element={<Home pictures={pictures} />} />
+            <Route path='/register' element={<Register />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/logout' element={<Logout />} />
+            <Route path='/catalog' element={<Catalog pictures={pictures} />} />
+            <Route path='/create' element={<CreatePost addPicture={addPicture} />} />
+            <Route path='/edit/:id' element={<Edit pictures={pictures} updatePicture={updatePicture} />} />
+            <Route path='/details/:id' element={<Details pictures={pictures} updatePicture={updatePicture} deletePicture={deletePicture} />} />
+            <Route path='/edit/comment/:id/:pictureId' element={<EditComment pictures={pictures} updatePicture={updatePicture} />} />
+            <Route path='/contact-us' element={<Contact />} />
+            <Route path='/about' element={<About />} />
+          </Routes>
 
-        {/* <Client /> */}
+          {/* <Client /> */}
 
-        <Achieve />
+          <Achieve />
 
 
-        <Info />
+          <Info />
 
-        <Footer />
-      </div>
+          <Footer />
+        </div>
       </AuthContext.Provider >
     </>
   );
