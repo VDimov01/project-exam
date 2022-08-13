@@ -33,7 +33,7 @@ export const AddComment = ({
 
         console.log(result);
         picture.comments.push(result._id);
-        pictureService.updateOne(picture._id, picture)
+        pictureService.updateOne(picture._id, picture, user.token)
             .then(result => {
                 setComment("");
                 updatePicture(picture);
@@ -70,7 +70,7 @@ export const AddComment = ({
                         {picture.comments.map(x =>
                             <Comment key={x._id} comment={x.text} commentId={x._id}
                                 creator={x.creator?.email} editComment={editComment}
-                                picture={picture}
+                                picture={picture} updatePicture={updatePicture}
                             />
                         )}
 

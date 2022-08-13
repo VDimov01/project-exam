@@ -7,7 +7,8 @@ export const Comment = ({
     comment,
     commentId,
     creator,
-    picture
+    picture,
+    updatePicture
 }) => {
     const username = creator?.split('@')[0];
     const { user } = useContext(AuthContext);
@@ -17,7 +18,8 @@ export const Comment = ({
 
         commentsService.deleteOne(commentId, user.token)
             .then(result => {
-                console.log(result);
+                picture.comments = picture.comments.filter(comment => comment !== commentId);
+                updatePicture(picture);
             })
     }
     return(
