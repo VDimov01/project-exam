@@ -38,7 +38,10 @@ function App() {
   }
 
   const updatePicture = (picture) => {
-    setPictures(pictures.map(p => p._id === picture._id ? picture : p));
+    picturesService.getOne(picture._id)
+      .then(result => {
+        setPictures(pictures.map(p => p._id === picture._id ? result : p));
+      })
   }
 
   const deletePicture = (id) => {
@@ -72,10 +75,7 @@ function App() {
             <Route path='/about' element={<About />} />
           </Routes>
 
-          {/* <Client /> */}
-
           <Achieve />
-
 
           <Info />
 
