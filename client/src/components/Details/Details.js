@@ -18,7 +18,7 @@ const Details = ({
     const delPic = (e) => {
         e.preventDefault();
 
-        pictureService.deleteOne(id)
+        pictureService.deleteOne(id, user.token)
             .then(result => {
                 deletePicture(id);
                 navigate('/catalog');
@@ -38,7 +38,7 @@ const Details = ({
                 </div>
                 <textarea className="description" id="description" value={picture.description} disabled></textarea>
                 <div className="button-div">
-                {picture.owner == user._id 
+                {picture.owner === user._id 
                 ?   <>
                         <Link className="btn btn-primary" to={`/edit/${id}`}>Edit</Link>
                         <button className="btn btn-secondary" onClick={delPic}>Delete</button>
@@ -48,9 +48,9 @@ const Details = ({
                
                 </div>
             </div>
+        <AddComment picture={picture} updatePicture={updatePicture}/>
         </section>
 
-        <AddComment picture={picture} updatePicture={updatePicture}/>
         </> 
       
     );

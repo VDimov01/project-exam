@@ -19,6 +19,7 @@ import Edit from './components/Edit/Edit';
 import { useEffect, useState } from 'react';
 import { AuthContext } from './contexts/AuthContext';
 import * as picturesService from './services/picturesService';
+import { EditComment } from './components/Details/EditComment';
 import * as commentsService from './services/commentsService';
 
 
@@ -30,7 +31,7 @@ function App() {
   useEffect(() => {
     picturesService.getAll()
       .then(pictures => setPictures(Object.values(pictures)))
-  },[pictures]);
+  },[]);
 
 
   const addPicture = (picture) => {
@@ -67,6 +68,7 @@ function App() {
           <Route path='/create' element={<CreatePost addPicture={addPicture}/>} />
           <Route path='/edit/:id' element={<Edit pictures={pictures} updatePicture={updatePicture}/>} />
           <Route path='/details/:id' element={<Details pictures={pictures} updatePicture={updatePicture} deletePicture={deletePicture}/>} />
+          <Route path='/edit/comment/:id/:pictureId' element={<EditComment pictures={pictures} updatePicture={updatePicture}/>} />
           <Route path='/contact-us' element={<Contact />} />
           <Route path='/about' element={<About />} />
         </Routes>

@@ -14,6 +14,13 @@ export const AddComment = ({
 
     const {user} = useContext(AuthContext);
 
+    const editComment = (commentId, comment) => {
+        commentsService.updateOne(commentId, comment)
+            .then(result => {
+                console.log('Edited');
+            })
+    }
+
     const onChange = (e) => {
         setComment(e.target.value);
     }
@@ -36,7 +43,8 @@ export const AddComment = ({
 
     return (
         <>
-        <section>
+        {user.email 
+            ?<section>
             <div className='form-wrapper'>
             <form className="create-form" onSubmit={onSubmit}>
                 <div className="form-group">
@@ -49,11 +57,22 @@ export const AddComment = ({
             </form>
                 </div>
         </section>
+        : ''
+        }
+        
 
         <section>
             <div className="form-wrapper">
                 <div>
-                    {picture.comments.map(x => <Comment key={x._id} comment={x.text} creator={x.creator?.email}/>)}
+                    
+                    {picture.comments.map(x => 
+                    <Comment key={x._id} comment={x.text} commentId={x._id} 
+                    creator={x.creator?.email} editComment={editComment}
+                    picture={picture}
+                    />
+                    )}
+
+                    {picture.comments.length == 0 && <p style={{fontWeight: "bold", fontSize: 32}}>No comments for this photo!</p>}
                 </div>
             </div>
         </section>

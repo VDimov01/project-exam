@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const {Comment} = require('../models/Comment');
+const {header, validationResult} = require('express-validator');
 
 router.get('/', (req, res) => {
     Comment.find()
@@ -24,7 +25,35 @@ router.get('/details/:id', (req, res) => {
     })
 });
 
-router.post('/', (req, res) => {
+router.delete('/details/:id', 
+(req, res) => {
+    const id = req.params.id;
+
+    Comment.findByIdAndRemove(id)
+    .then((comment) => {
+        res.json(comment);
+    })
+    .catch((err) => {
+        res.json(err);
+    })
+})
+
+router.put('/details/:id', 
+(req, res) => {
+    const id = req.params.id;
+    const comment = req.body;
+
+    Comment.findByIdAndUpdate(id, comment)
+    .then((comment) => {
+        res.json(comment);
+    })
+    .catch((err) => {
+        res.json(err);
+    })
+})
+
+router.post('/', 
+(req, res) => {
     const comment = req.body;
 
     Comment.create(comment)
