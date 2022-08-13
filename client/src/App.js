@@ -26,17 +26,12 @@ function App() {
 
   const [auth, setAuth] = useState({});
   const [pictures, setPictures] = useState([]);
-  // const [comments, setComments] = useState([]);
 
   useEffect(() => {
     picturesService.getAll()
       .then(pictures => setPictures(Object.values(pictures)))
-  },[]);
+  },[pictures]);
 
-  // useEffect(() => {
-  //   commentsService.getAll()
-  //     .then(comments => setComments(Object.values(comments)))
-  // },[]);
 
   const addPicture = (picture) => {
     setPictures([...pictures, picture]);
@@ -56,10 +51,6 @@ function App() {
 
   const userLogout = () => {
     setAuth({});
-  }
-
-  const addComment = (comment) => {
-
   }
 
   return (

@@ -3,7 +3,7 @@ const { Picture } = require('../models/Picture');
 const { body, validationResult } = require('express-validator');
 
 router.get('/', (req, res) => {
-    Picture.find().populate('comments')
+    Picture.find().populate({path: 'comments', populate: {path: 'creator'}})
         .then((pictures) => {
             res.json(pictures);
         })

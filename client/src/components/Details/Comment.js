@@ -5,8 +5,7 @@ export const Comment = ({
     comment,
     creator
 }) => {
-    console.log(creator);
     return(
-        <h3>{creator.email}: {comment.text}</h3>
+        <h3>{creator}: {comment}</h3>
     );
 }
