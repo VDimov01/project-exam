@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { Picture } = require('../models/Picture');
-const { body, validationResult } = require('express-validator');
+const { body, validationResult, header } = require('express-validator');
 
 router.get('/', (req, res) => {
     Picture.find().populate({path: 'comments', populate: {path: 'creator'}})
@@ -26,6 +26,7 @@ router.get('/details/:id', (req, res) => {
 });
 
 router.put('/details/:id',
+    header('X-Authorization', 'You need authorization token').exists(),
     body('title').isLength({ min: 3 }).withMessage('Title must be at least 3 characters long'),
     body('description').isLength({ min: 5 }).withMessage('Description must be at least 5 characters long'),
     body('imageUrl').isURL().withMessage('Image URL must be valid'),
@@ -48,7 +49,9 @@ router.put('/details/:id',
             })
     });
 
-router.delete('/details/:id', (req, res) => {
+router.delete('/details/:id', 
+header('X-Authorization', 'You need authorization token').exists(),
+(req, res) => {
     const id = req.params.id;
 
     Picture.findByIdAndDelete(id)
@@ -61,6 +64,7 @@ router.delete('/details/:id', (req, res) => {
 });
 
 router.post('/',
+    header('X-Authorization', 'You need authorization token').exists(),
     body('title').isLength({ min: 3 }).withMessage('Title must be at least 3 characters long'),
     body('description').isLength({ min: 5 }).withMessage('Description must be at least 5 characters long'),
     body('imageUrl').isURL().withMessage('Image URL must be valid'),
