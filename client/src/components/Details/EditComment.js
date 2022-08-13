@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import * as commentsService from "../../services/commentsService";
+import * as pictureService from "../../services/picturesService";
 
 export const EditComment = ({
     pictures,
@@ -28,14 +29,18 @@ export const EditComment = ({
         console.log('change');
     }
 
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault();
-        commentsService.updateOne(id, comment)
-            .then(result => {
-                picture.comments.map(c => c._id === id ? result : c);
+        const result = await commentsService.updateOne(id, comment);
+        
+        picture.comments.map(c => c._id === id ? result : c);
+        pictureService.updateOne(picture._id, picture)
+            .then(data => {
                 updatePicture(picture);
                 navigate('/catalog');
             })
+                
+           
     }
 
     return (
