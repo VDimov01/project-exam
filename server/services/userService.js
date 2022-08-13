@@ -3,7 +3,6 @@ const secret = 'secret';
 
 
 exports.createToken = (user) => {
-    //Asyncrhonous function to generate a token
     const payload = {_id: user._id, email: user.email};
 
             const promise = new Promise((resolve, reject) => {
@@ -18,8 +17,4 @@ exports.createToken = (user) => {
 
             return promise;
 
-            //Synchronous function to generate a token
-            // const token = jwt.sign({username: user.username, _id: userExists._id, name: userExists.name}, secret, {expiresIn: '1h'});
-            // res.cookie(sessionName, token, {httpOnly: true});
-            // res.redirect('/');
 }
