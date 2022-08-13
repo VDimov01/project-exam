@@ -13,8 +13,8 @@ export const Home = ({
             Our portfolio
           </h2>
           <p style={{ fontWeight: "bold" }}>
-            Welcome to our website! You can browse our users's photos and see their work.
-            After successfull registration you can add your own photos as well as comments to the other users's photos.
+            Welcome to our website! You can browse our users' photos and see their work.
+            After successfull registration you can add your own photos as well as comments to the other users' photos.
           </p>
         </div>
         <div className="portfolio_container layout_padding2">

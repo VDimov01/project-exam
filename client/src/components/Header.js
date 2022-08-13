@@ -15,7 +15,7 @@ export const Header = () => {
                 <Link className="navbar-brand" to="/">
                   <img src="images/logo.png" alt="" />
                   <span>
-                    Uliya
+                    Photos
                   </span>
                 </Link>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -30,15 +30,14 @@ export const Header = () => {
                         <Link className="nav-link" to="/">Home <span className="sr-only">(current)</span></Link>
                       </li>
                       <li className="nav-item">
-                        <Link className="nav-link" to="/about"> About</Link>
-                      </li>
-                      <li className="nav-item">
                         <Link className="nav-link" to="/catalog"> Catalog </Link>
                       </li>
                       <li className="nav-item">
                             <Link className="nav-link" to="/contact-us">Contact Us</Link>
                       </li>
-                      
+                      <li className="nav-item">
+                        <Link className="nav-link" to="/about"> About</Link>
+                      </li>
                      
                       {user.email 
                       ?<> 
@@ -63,9 +62,9 @@ export const Header = () => {
                       }
                       
                     </ul>
-                    <form className="form-inline">
+                    {/* <form className="form-inline">
                       <button className="btn  my-2 my-sm-0 nav_search-btn" type="submit"></button>
-                    </form>
+                    </form> */}
                   </div>
   
                 </div>

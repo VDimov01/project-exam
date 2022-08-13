@@ -5,7 +5,7 @@ export const About = () => {
     <div className="container">
       <div className="heading_container">
         <h2>
-          About Studio
+          About Us
         </h2>
       </div>
       <div className="box">
