@@ -8,6 +8,28 @@
   padding: 20px;
 }
 
+.card {
+    
+  border: none;
+  box-shadow: 5px 6px 6px 2px #e9ecef;
+  border-radius: 4px;
+  width: 500px;
+}
+
+.user-img{
+
+  margin-top: 4px;
+}
+
+.username{
+  margin: 4px;
+}
+
+.comments-button-div{
+  display: flex;
+  justify-content: right;
+}
+
 .form-input{
   width: 750px;
   height: 150px;
