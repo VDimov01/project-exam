@@ -20,7 +20,6 @@ import { useEffect, useState } from 'react';
 import { AuthContext } from './contexts/AuthContext';
 import * as picturesService from './services/picturesService';
 import { EditComment } from './components/Details/EditComment';
-import * as commentsService from './services/commentsService';
 
 
 function App() {
