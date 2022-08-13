@@ -8,7 +8,7 @@ export const Achieve = () => {
           ACHIEVEMENTS
         </h2>
         <p>
-          minim veniam, quis nostrud exercitation ullamco laboris nisi
+        
         </p>
       </div>
       <div className="achieve_container">

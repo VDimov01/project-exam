@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 const CatalogItem = ({
     picture
@@ -8,13 +9,14 @@ const CatalogItem = ({
           <div className="img-box b-1">
             <img src={picture.imageUrl} alt="" />
             <div className="btn-box">
-              <a href="" className="btn-1">
+              <Link to={`/details/${picture._id}`} className="btn-1">
 
-              </a>
+              </Link>
             </div>
           </div>
           
         </div>
+    
     );
 }
 
