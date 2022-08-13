@@ -37,7 +37,7 @@ export const EditComment = ({
         pictureService.updateOne(picture._id, picture)
             .then(data => {
                 updatePicture(picture);
-                navigate('/catalog');
+                navigate(`/details/${picture._id}`);
             })
                 
            
