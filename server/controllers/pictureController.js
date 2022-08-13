@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
 router.get('/details/:id', (req, res) => {
     const id = req.params.id;
 
-    Picture.findById(id).populate('comments')
+    Picture.findById(id).populate({path: 'comments', populate: {path: 'creator'}})
         .then((picture) => {
             res.json(picture);
         })
