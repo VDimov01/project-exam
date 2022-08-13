@@ -1,8 +1,8 @@
 import { useParams, useNavigate, Link } from "react-router-dom";
-
-import * as pictureService from "../../services/picturesService";
-
+import { useContext } from "react";
 import { AddComment } from "./AddComment";
+import { AuthContext } from "../../contexts/AuthContext";
+import * as pictureService from "../../services/picturesService";
 
 const Details = ({
     pictures,
@@ -11,7 +11,7 @@ const Details = ({
 }) => {
     const { id } = useParams();
     const navigate = useNavigate();
-   
+    const { user } = useContext(AuthContext);
     
     const picture = pictures.find(p => p._id === id);
 
@@ -38,8 +38,14 @@ const Details = ({
                 </div>
                 <textarea className="description" id="description" value={picture.description} disabled></textarea>
                 <div className="button-div">
-                <Link className="btn btn-primary" to={`/edit/${id}`}>Edit</Link>
-                <button className="btn btn-secondary" onClick={delPic}>Delete</button>
+                {picture.owner == user._id 
+                ?   <>
+                        <Link className="btn btn-primary" to={`/edit/${id}`}>Edit</Link>
+                        <button className="btn btn-secondary" onClick={delPic}>Delete</button>
+                    </>
+                : ''
+                }
+               
                 </div>
             </div>
         </section>
