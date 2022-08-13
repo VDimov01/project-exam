@@ -45,10 +45,11 @@ const CreatePost = ({
         e.preventDefault();
 
         data.owner = user._id;
+        const token = user.token
 
         const {title, description, imageUrl, owner } = data;
 
-        pictureService.create(title, description, imageUrl, owner)
+        pictureService.create(title, description, imageUrl, owner, token)
             .then(result => {
                 addPicture(result)
                 navigate('/catalog');

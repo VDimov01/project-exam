@@ -1,13 +1,15 @@
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import * as picturesService from "../../services/picturesService";
+import { AuthContext } from "../../contexts/AuthContext";
 
 const Edit = ({
     pictures,
     updatePicture
 }) => {
     const navigate = useNavigate();
+    const { user } = useContext(AuthContext);
     const {id} = useParams();
     const [errors, setErrors] = useState({});
     const [data, setData] = useState({
@@ -21,7 +23,7 @@ const Edit = ({
     useEffect(() => {
         setData(picture);
         console.log('change');
-    },[picture]);
+    },[]);
 
     const onChange = (e) => {
         setData(state => {
@@ -51,7 +53,7 @@ const Edit = ({
     const onSubmit = (e) => {
         e.preventDefault();
 
-        picturesService.updateOne(id, data)
+        picturesService.updateOne(id, data, user.token)
             .then(picture => {
                 updatePicture(data);
                 navigate('/catalog');
