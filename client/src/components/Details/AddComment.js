@@ -31,7 +31,6 @@ export const AddComment = ({
 
         const result = await commentsService.create(user._id, comment);
 
-        console.log(result);
         picture.comments.push(result._id);
         pictureService.updateOne(picture._id, picture, user.token)
             .then(result => {

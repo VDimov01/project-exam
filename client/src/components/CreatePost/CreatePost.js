@@ -51,9 +51,14 @@ const CreatePost = ({
 
         pictureService.create(title, description, imageUrl, owner, token)
             .then(result => {
-                addPicture(result)
+                if(result.errors){
+                    alert(result.errors[0].msg);
+                }else{
+                    addPicture(result);
+                }
                 navigate('/catalog');
-            });
+            })
+            .catch(err => console.log(err));
     }
 
     return (

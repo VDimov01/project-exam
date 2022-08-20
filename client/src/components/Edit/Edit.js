@@ -55,8 +55,12 @@ const Edit = ({
 
         picturesService.updateOne(id, data, user.token)
             .then(picture => {
-                updatePicture(data);
-                navigate('/catalog');
+                if(picture.errors){
+                    alert(picture.errors[0].msg);
+                }else{
+                    updatePicture(data);
+                    navigate('/catalog');
+                }
             })
     }
 
@@ -75,8 +79,8 @@ const Edit = ({
                 </div>
                 <div className="form-group">
                     <label htmlFor="description">Description</label>
-                    <textarea id="description" className="form-control" name="description" placeholder="Description..." onBlur={(e) => minLength(e, 10)} value={data.description} onChange={onChange}></textarea>
-                    {errors.description && <p className="error">Description must be at least 10 characters long</p>}
+                    <textarea id="description" className="form-control" name="description" placeholder="Description..." onBlur={(e) => minLength(e, 5)} value={data.description} onChange={onChange}></textarea>
+                    {errors.description && <p className="error">Description must be at least 5 characters long</p>}
                 </div>
                 <button type="submit" className="btn btn-primary">Submit</button>
             </form>

@@ -34,13 +34,17 @@ const Register = () => {
         e.preventDefault();
 
         if(user.password !== user.confirmPassword) {
-            return;
+            return alert("Passwords do not match");
         }
 
         authService.register(user.email, user.password)
             .then(user => {
-                userLogin(user);
-                navigate('/');
+                if(user.errors) {
+                    alert(user.errors[0].msg);
+                }else{
+                    userLogin(user);
+                    navigate('/');
+                }
             })
     }
 

@@ -20,8 +20,12 @@ const Details = ({
 
         pictureService.deleteOne(id, user.token)
             .then(result => {
-                deletePicture(id);
-                navigate('/catalog');
+                if(result.errors){
+                    alert(result.errors[0].msg);
+                }else{
+                    deletePicture(id);
+                    navigate('/catalog');
+                }
             })
     }
 

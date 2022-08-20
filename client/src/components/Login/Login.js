@@ -17,8 +17,12 @@ const Login = () => {
 
         authService.login(email, password)
             .then((user) => {
-                userLogin(user);
-                navigate('/');
+                if(user.errors){
+                    alert(user.errors[0].msg);
+                }else{
+                    userLogin(user);
+                    navigate('/');
+                }
             })
 
     }

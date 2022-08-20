@@ -54,6 +54,12 @@ header('X-Authorization', 'You need authorization token').exists(),
 (req, res) => {
     const id = req.params.id;
 
+    const errors = validationResult(req);
+
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() });
+        }
+
     Picture.findByIdAndDelete(id)
         .then((picture) => {
             res.json(picture);
