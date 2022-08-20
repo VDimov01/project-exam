@@ -62,7 +62,7 @@ function App() {
         <div className="App">
           <Header />
           <Routes>
-            <Route path='/' element={<Home pictures={pictures} />} />
+            <Route path='/' element={<div className='container-styles'><Home pictures={pictures} /></div>} />
             <Route path='/register' element={<Register />} />
             <Route path='/login' element={<Login />} />
             <Route path='/logout' element={<Logout />} />
