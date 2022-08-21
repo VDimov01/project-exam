@@ -6,7 +6,6 @@ import { useState } from "react";
 export const Home = ({
   pictures
 }) => {
-  // pictures = pictures.slice(pictures.length - 2);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const slideStyles = {
